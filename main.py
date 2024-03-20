@@ -3,11 +3,6 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 
-#-------------------------------------------------------------
-#WARNING
-# Due to python's single threaded nature, the next step can only happen once the earlier graphic has been closed.
-#-------------------------------------------------------------
-
 # loads the dataset
 # this dataset contains 60k 28x28 pixel images of clothing items, there are 9 different types of clothing, and each is labeled in the dataset
 fashion_mnist = tf.keras.datasets.fashion_mnist
@@ -56,7 +51,6 @@ model.fit(train_images, train_labels, epochs=10)
 test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
 print('\n Test accuracy:', test_acc)
 
-"""
 # gets predictions for images
 probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
 predictions = probability_model.predict(test_images)
@@ -101,4 +95,3 @@ plot_image(i, predictions[i], test_labels, test_images)
 plt.subplot(1,2,2)
 plot_value_array(i, predictions[i],  test_labels)
 plt.show()
-"""
